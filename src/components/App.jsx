@@ -33,7 +33,16 @@ const App = () => {
         setPictures(prevPic =>
           prevPic ? [...prevPic, ...upDatePictures] : upDatePictures
         );
-        console.log(pictureRef);
+
+        if (pictureRef.current) {
+          const { height: cardHeight } =
+            pictureRef.current.getBoundingClientRect();
+
+          window.scrollBy({
+            top: cardHeight * 2,
+            behavior: 'smooth',
+          });
+        }
       } catch (err) {
         setError(error);
       } finally {
@@ -54,7 +63,7 @@ const App = () => {
   };
 
   // const scrollDown = ({ height: cardHeight }) => {
-  //   if (условие) {
+  //   if (pictureRef.current) {
   //     window.scrollBy({
   //       top: cardHeight * 2,
   //       behavior: 'smooth',

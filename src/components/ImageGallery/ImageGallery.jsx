@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
 import ImageGalleryItem from './ImageGalleryItem';
 import { Container } from './ImageGallery.styled';
+import { forwardRef } from 'react';
 
-export const ImageGallery = ({ onClick, pictures }, ref) => {
+export const ImageGallery = forwardRef(({ onClick, pictures }, ref) => {
   return (
     <Container>
       {pictures.map(({ tags, webformatURL, largeImageURL }, index) => {
@@ -13,12 +14,13 @@ export const ImageGallery = ({ onClick, pictures }, ref) => {
             webformatURL={webformatURL}
             largeImageURL={largeImageURL}
             onClick={onClick}
+            ref={ref}
           />
         );
       })}
     </Container>
   );
-};
+});
 
 export default ImageGallery;
 
