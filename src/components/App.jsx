@@ -63,15 +63,6 @@ const App = () => {
     setQuery(currentQuery);
   };
 
-  // const scrollDown = ({ height: cardHeight }) => {
-  //   if (pictureRef.current) {
-  //     window.scrollBy({
-  //       top: cardHeight * 2,
-  //       behavior: 'smooth',
-  //     });
-  //   }
-  // };
-
   return (
     <>
       <Box
