@@ -33,16 +33,6 @@ const App = () => {
         setPictures(prevPic =>
           prevPic ? [...prevPic, ...upDatePictures] : upDatePictures
         );
-
-        if (pictureRef.current) {
-          const { height: cardHeight } =
-            pictureRef.current.getBoundingClientRect();
-
-          window.scrollBy({
-            top: cardHeight * 2,
-            behavior: 'smooth',
-          });
-        }
       } catch (err) {
         setError(error);
       } finally {
@@ -51,6 +41,17 @@ const App = () => {
     };
     getPictures();
   }, [query, page, error]);
+
+  useEffect(() => {
+    if (pictureRef.current) {
+      const { height: cardHeight } = pictureRef.current.getBoundingClientRect();
+
+      window.scrollBy({
+        top: cardHeight * 2,
+        behavior: 'smooth',
+      });
+    }
+  }, [pictures]);
 
   const handlerSubmit = currentQuery => {
     if (query === currentQuery || currentQuery.trim() === '') {
